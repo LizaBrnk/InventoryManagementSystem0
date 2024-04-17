@@ -9,7 +9,7 @@ namespace InventoryManagementSystem {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ManageProducts());
+            Application.Run(new ManageOrders());
         }
     }
 }
