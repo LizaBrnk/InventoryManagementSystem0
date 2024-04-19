@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using static DevExpress.Data.Helpers.ExpressiveSortInfo;
 
 namespace InventoryManagementSystem {
     public partial class ManageOrders : Form {
@@ -87,6 +88,7 @@ namespace InventoryManagementSystem {
             }
         }
 
+        
         int num = 0;
         int price, totprice, qty;
         string product;
@@ -96,6 +98,7 @@ namespace InventoryManagementSystem {
             populatecustomer();
             populateproduct();
             fillcategory();
+            updateproduct();
         }
 
         private void CustomersGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -135,18 +138,35 @@ namespace InventoryManagementSystem {
         }
 
         int flag = 0;
+        int stock;
+        private int id;
         DataTable table = new DataTable();
 
         private void ProductsGV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //product = ProductsGV.SelectedRows[0].Cells[1].Value.ToString();
-            //price = Convert.ToInt32(ProductsGV.SelectedRows[0].Cells[3].Value.ToString());
-
-            if (e.RowIndex >= 0) // Перевіряємо, що клік було здійснено по рядку, а не заголовку стовпця
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = ProductsGV.Rows[e.RowIndex];
+                id = Convert.ToInt32(row.Cells[0].Value?.ToString()); // Зберігаємо id вибраного продукту
+                product = row.Cells[1].Value?.ToString() ?? "";
+                stock = Convert.ToInt32(row.Cells[2].Value?.ToString());
+                price = Convert.ToInt32(row.Cells[3].Value?.ToString());
+                flag = 1;
+            }
+            if (e.RowIndex >= 1) // Перевіряємо, що клік було здійснено по рядку, а не заголовку стовпця
             {
                 // Витягуємо значення з клітинок клікнутого рядка
                 DataGridViewRow row = ProductsGV.Rows[e.RowIndex];
                 product = row.Cells[1].Value?.ToString() ?? "";
+                stock = Convert.ToInt32(row.Cells[2].Value?.ToString());
+                price = Convert.ToInt32(row.Cells[3].Value?.ToString() ?? "");
+            }
+            if (e.RowIndex >= 2) // Перевіряємо, що клік було здійснено по рядку, а не заголовку стовпця
+            {
+                // Витягуємо значення з клітинок клікнутого рядка
+                DataGridViewRow row = ProductsGV.Rows[e.RowIndex];
+                product = row.Cells[1].Value?.ToString() ?? "";
+                stock = Convert.ToInt32(row.Cells[2].Value?.ToString());
                 price = Convert.ToInt32(row.Cells[3].Value?.ToString() ?? "");
             }
             if (e.RowIndex >= 3) // Перевіряємо, що клік було здійснено по рядку, а не заголовку стовпця
@@ -154,16 +174,28 @@ namespace InventoryManagementSystem {
                 // Витягуємо значення з клітинок клікнутого рядка
                 DataGridViewRow row = ProductsGV.Rows[e.RowIndex];
                 product = row.Cells[1].Value?.ToString() ?? "";
+                stock = Convert.ToInt32(row.Cells[2].Value?.ToString());
                 price = Convert.ToInt32(row.Cells[3].Value?.ToString() ?? "");
             }
 
             flag = 1;
         }
 
+        void updateproduct()
+        {
+            Con.Open();
+            //int id = Convert.ToInt32(row.Cells[3].Value?.ToString());
+            int newQty = stock - Convert.ToInt32(QtyTb.Text);
+            string query = "update ProductTbl set ProdQty = "+newQty+" where ProdId = "+id+";";
+            SqlCommand cmd = new SqlCommand(query, Con);
+            cmd.ExecuteNonQuery();
+            Con.Close();
+            populateproduct();
+        }
+
+        private int totalSum = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            int sum = 0;
-
             if (QtyTb.Text == "")
             {
                 MessageBox.Show("Enter the Quantity of Product");
@@ -172,6 +204,10 @@ namespace InventoryManagementSystem {
             {
                 MessageBox.Show("Select the Product");
             }
+            else if (Convert.ToInt32(QtyTb.Text) > stock)
+            {
+                MessageBox.Show("No Enough Stock Available");
+            }
             else
             {
                 num = num + 1;
@@ -179,10 +215,10 @@ namespace InventoryManagementSystem {
                 totprice = qty * price;
                 OrderGV.Rows.Add(num, product, qty, price, totprice);
                 flag = 0;
-            }
 
-            sum = sum + totprice;
-            TotAmount.Text = "Rs" + sum.ToString();
+                totalSum += totprice;
+                TotAmount.Text = totalSum.ToString() + " $";
+            }
         }
     }
 }
