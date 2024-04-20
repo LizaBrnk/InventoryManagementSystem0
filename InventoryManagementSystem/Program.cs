@@ -13,3 +13,8 @@ namespace InventoryManagementSystem {
         }
     }
 }
+// ManageProducts
+// ManageOrders
+// ManageCustomers
+// ManageCategories
+// ManageUsers

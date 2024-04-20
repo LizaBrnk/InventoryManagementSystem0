@@ -98,7 +98,7 @@ namespace InventoryManagementSystem {
             populatecustomer();
             populateproduct();
             fillcategory();
-            updateproduct();
+            //updateproduct();
         }
 
         private void CustomersGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -139,7 +139,7 @@ namespace InventoryManagementSystem {
 
         int flag = 0;
         int stock;
-        private int id;
+        //private int id;
         DataTable table = new DataTable();
 
         private void ProductsGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -147,7 +147,7 @@ namespace InventoryManagementSystem {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = ProductsGV.Rows[e.RowIndex];
-                id = Convert.ToInt32(row.Cells[0].Value?.ToString()); // Зберігаємо id вибраного продукту
+                //id = Convert.ToInt32(row.Cells[0].Value?.ToString()); // Зберігаємо id вибраного продукту
                 product = row.Cells[1].Value?.ToString() ?? "";
                 stock = Convert.ToInt32(row.Cells[2].Value?.ToString());
                 price = Convert.ToInt32(row.Cells[3].Value?.ToString());
@@ -181,17 +181,18 @@ namespace InventoryManagementSystem {
             flag = 1;
         }
 
-        void updateproduct()
+        /*void updateproduct()
         {
             Con.Open();
+            // where ProdId = "+id+"
             //int id = Convert.ToInt32(row.Cells[3].Value?.ToString());
             int newQty = stock - Convert.ToInt32(QtyTb.Text);
-            string query = "update ProductTbl set ProdQty = "+newQty+" where ProdId = "+id+";";
+            string query = "update ProductTbl set ProdQty = "+newQty+";";
             SqlCommand cmd = new SqlCommand(query, Con);
             cmd.ExecuteNonQuery();
             Con.Close();
             populateproduct();
-        }
+        }*/
 
         private int totalSum = 0;
         private void button1_Click(object sender, EventArgs e)
