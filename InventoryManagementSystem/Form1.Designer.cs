@@ -116,6 +116,7 @@
             button1.TabIndex = 3;
             button1.Text = "LOGIN";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // UnameTb
             // 
@@ -163,6 +164,7 @@
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
+            Load += Form1_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

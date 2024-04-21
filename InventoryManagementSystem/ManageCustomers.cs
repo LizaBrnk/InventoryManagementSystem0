@@ -110,6 +110,23 @@ namespace InventoryManagementSystem {
                 CustomernameTb.Text = row.Cells[1].Value?.ToString() ?? "";
                 CustomerPhoneTb.Text = row.Cells[2].Value?.ToString() ?? "";
             }
+
+            Con.Open();
+            SqlDataAdapter sda = new SqlDataAdapter("select Count(*) from OrderTbl where CustId = "+Customerid.Text+"", Con);
+            DataTable dt = new DataTable();
+            sda.Fill(dt);
+            OrderLabel.Text = dt.Rows[0][0].ToString();
+
+            SqlDataAdapter sda1 = new SqlDataAdapter("select Sum(TotalAmt) from OrderTbl where CustId = " + Customerid.Text + "", Con);
+            DataTable dt1 = new DataTable();
+            sda1.Fill(dt1);
+            AmountLabel.Text = dt1.Rows[0][0].ToString();
+
+            SqlDataAdapter sda2 = new SqlDataAdapter("select Max(OrderDate) from OrderTbl where CustId = " + Customerid.Text + "", Con);
+            DataTable dt2 = new DataTable();
+            sda2.Fill(dt2);
+            DateLabel.Text = dt2.Rows[0][0].ToString();
+            Con.Close();
         }
 
         private void button2_Click(object sender, EventArgs e)

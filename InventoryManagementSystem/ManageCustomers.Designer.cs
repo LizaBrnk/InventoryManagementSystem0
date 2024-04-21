@@ -41,13 +41,13 @@
             button1 = new Button();
             panel2 = new Panel();
             panel3 = new Panel();
+            OrderLabel = new Label();
             label5 = new Label();
-            label6 = new Label();
             panel4 = new Panel();
-            label7 = new Label();
+            AmountLabel = new Label();
             label8 = new Label();
             panel5 = new Panel();
-            label9 = new Label();
+            DateLabel = new Label();
             label10 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CustomersGV).BeginInit();
@@ -236,62 +236,62 @@
             // panel3
             // 
             panel3.BackColor = Color.MediumVioletRed;
-            panel3.Controls.Add(label6);
+            panel3.Controls.Add(OrderLabel);
             panel3.Controls.Add(label5);
             panel3.Location = new Point(73, 529);
             panel3.Name = "panel3";
-            panel3.Size = new Size(206, 101);
+            panel3.Size = new Size(186, 101);
             panel3.TabIndex = 19;
+            // 
+            // OrderLabel
+            // 
+            OrderLabel.AutoSize = true;
+            OrderLabel.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            OrderLabel.ForeColor = Color.White;
+            OrderLabel.Location = new Point(26, 43);
+            OrderLabel.Name = "OrderLabel";
+            OrderLabel.Size = new Size(125, 40);
+            OrderLabel.TabIndex = 20;
+            OrderLabel.Text = "Orders";
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(0, 0);
+            label5.Location = new Point(21, 10);
             label5.Name = "label5";
             label5.Size = new Size(139, 23);
             label5.TabIndex = 20;
             label5.Text = "Orders Count";
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.ForeColor = Color.White;
-            label6.Location = new Point(0, 33);
-            label6.Name = "label6";
-            label6.Size = new Size(125, 40);
-            label6.TabIndex = 20;
-            label6.Text = "Orders";
-            // 
             // panel4
             // 
             panel4.BackColor = Color.ForestGreen;
-            panel4.Controls.Add(label7);
+            panel4.Controls.Add(AmountLabel);
             panel4.Controls.Add(label8);
-            panel4.Location = new Point(347, 529);
+            panel4.Location = new Point(343, 529);
             panel4.Name = "panel4";
             panel4.Size = new Size(206, 101);
             panel4.TabIndex = 20;
             // 
-            // label7
+            // AmountLabel
             // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.ForeColor = Color.White;
-            label7.Location = new Point(0, 33);
-            label7.Name = "label7";
-            label7.Size = new Size(146, 40);
-            label7.TabIndex = 20;
-            label7.Text = "Amount";
+            AmountLabel.AutoSize = true;
+            AmountLabel.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            AmountLabel.ForeColor = Color.White;
+            AmountLabel.Location = new Point(34, 43);
+            AmountLabel.Name = "AmountLabel";
+            AmountLabel.Size = new Size(146, 40);
+            AmountLabel.TabIndex = 20;
+            AmountLabel.Text = "Amount";
             // 
             // label8
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(0, 0);
+            label8.Location = new Point(23, 10);
             label8.Name = "label8";
             label8.Size = new Size(157, 23);
             label8.TabIndex = 20;
@@ -300,31 +300,31 @@
             // panel5
             // 
             panel5.BackColor = Color.RoyalBlue;
-            panel5.Controls.Add(label9);
+            panel5.Controls.Add(DateLabel);
             panel5.Controls.Add(label10);
-            panel5.Location = new Point(622, 529);
+            panel5.Location = new Point(638, 529);
             panel5.Name = "panel5";
-            panel5.Size = new Size(206, 101);
+            panel5.Size = new Size(190, 101);
             panel5.TabIndex = 21;
             // 
-            // label9
+            // DateLabel
             // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = Color.White;
-            label9.Location = new Point(0, 33);
-            label9.Name = "label9";
-            label9.Size = new Size(99, 40);
-            label9.TabIndex = 20;
-            label9.Text = "Date";
-            label9.Click += label9_Click;
+            DateLabel.AutoSize = true;
+            DateLabel.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            DateLabel.ForeColor = Color.White;
+            DateLabel.Location = new Point(3, 43);
+            DateLabel.Name = "DateLabel";
+            DateLabel.Size = new Size(99, 40);
+            DateLabel.TabIndex = 20;
+            DateLabel.Text = "Date";
+            DateLabel.Click += label9_Click;
             // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label10.ForeColor = Color.White;
-            label10.Location = new Point(0, 0);
+            label10.Location = new Point(14, 10);
             label10.Name = "label10";
             label10.Size = new Size(160, 23);
             label10.TabIndex = 20;
@@ -385,12 +385,12 @@
         private Panel panel2;
         private Panel panel3;
         private Label label5;
-        private Label label6;
+        private Label OrderLabel;
         private Panel panel4;
-        private Label label7;
+        private Label AmountLabel;
         private Label label8;
         private Panel panel5;
-        private Label label9;
+        private Label DateLabel;
         private Label label10;
     }
 }

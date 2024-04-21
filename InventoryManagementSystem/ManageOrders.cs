@@ -88,7 +88,7 @@ namespace InventoryManagementSystem {
             }
         }
 
-        
+
         int num = 0;
         int price, totprice, qty;
         string product;
@@ -98,7 +98,7 @@ namespace InventoryManagementSystem {
             populatecustomer();
             populateproduct();
             fillcategory();
-            //updateproduct();
+            updateproduct();
 
             table.Columns.Add("Num", typeof(int));
             table.Columns.Add("Product", typeof(string));
@@ -114,6 +114,7 @@ namespace InventoryManagementSystem {
                 // Витягуємо значення з клітинок клікнутого рядка
                 DataGridViewRow row = CustomersGV.Rows[e.RowIndex];
                 CustIdTb.Text = row.Cells[0].Value?.ToString() ?? "";
+                CustName.Text = row.Cells[1].Value?.ToString() ?? "";
             }
 
             if (e.RowIndex >= 1) // Перевіряємо, що клік було здійснено по рядку, а не заголовку стовпця
@@ -121,6 +122,7 @@ namespace InventoryManagementSystem {
                 // Витягуємо значення з клітинок клікнутого рядка
                 DataGridViewRow row = CustomersGV.Rows[e.RowIndex];
                 CustIdTb.Text = row.Cells[0].Value?.ToString() ?? "";
+                CustName.Text = row.Cells[1].Value?.ToString() ?? "";
             }
         }
 
@@ -187,18 +189,27 @@ namespace InventoryManagementSystem {
             flag = 1;
         }
 
-        /*void updateproduct()
+        void updateproduct()
         {
-            Con.Open();
-            // where ProdId = "+id+"
-            //int id = Convert.ToInt32(row.Cells[3].Value?.ToString());
-            int newQty = stock - Convert.ToInt32(QtyTb.Text);
-            string query = "update ProductTbl set ProdQty = "+newQty+";";
-            SqlCommand cmd = new SqlCommand(query, Con);
-            cmd.ExecuteNonQuery();
-            Con.Close();
-            populateproduct();
-        }*/
+            if (ProductsGV.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(ProductsGV.SelectedRows[0].Cells[0].Value.ToString());
+                int newQty = stock - Convert.ToInt32(QtyTb.Text);
+                if (newQty < 0)
+                {
+                    MessageBox.Show("Operation Failed");
+                }
+                else
+                {
+                    Con.Open();
+                    string query = "update ProductTbl set ProdQty = " + newQty + " where ProdId = " + id + ";";
+                    SqlCommand cmd = new SqlCommand(query, Con);
+                    cmd.ExecuteNonQuery();
+                    Con.Close();
+                    populateproduct();
+                }
+            }
+        }
 
         private int totalSum = 0;
         private void button1_Click(object sender, EventArgs e)
@@ -225,8 +236,43 @@ namespace InventoryManagementSystem {
                 flag = 0;
 
                 totalSum += totprice;
-                TotAmount.Text = totalSum.ToString() + " $";
+                TotAmount.Text = totalSum.ToString();
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (OrderIdTb.Text == "")
+            {
+                MessageBox.Show("Fill the Data Correctly");
+            }
+            else if (CustIdTb.Text == "")
+            {
+                MessageBox.Show("Fill the Data Correctly");
+            }
+            else if (CustName.Text == "")
+            {
+                MessageBox.Show("Fill the Data Correctly");
+            }
+            else if (TotAmount.Text == "")
+            {
+                MessageBox.Show("Fill the Data Correctly");
+            }
+            else
+            {
+                Con.Open();
+                string orderDate = DateTime.Now.ToString("yyyy-MM-dd");
+                SqlCommand cmd = new SqlCommand("insert into OrderTbl values('" + OrderIdTb.Text + "', '" + CustIdTb.Text + "', '" + CustName.Text + "', '" + orderDate + "', '" + TotAmount.Text + "')", Con);
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Order Successfully Added");
+                Con.Close();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ViewOrders view = new ViewOrders();
+            view.Show();
         }
     }
 }
