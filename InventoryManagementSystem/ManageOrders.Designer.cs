@@ -43,11 +43,6 @@
             label6 = new Label();
             button1 = new Button();
             OrderGV = new DataGridView();
-            Num = new DataGridViewTextBoxColumn();
-            Product = new DataGridViewTextBoxColumn();
-            Quantity = new DataGridViewTextBoxColumn();
-            Price = new DataGridViewTextBoxColumn();
-            TotPrice = new DataGridViewTextBoxColumn();
             textBox1 = new TextBox();
             label7 = new Label();
             TotAmount = new Label();
@@ -246,49 +241,13 @@
             // 
             OrderGV.BackgroundColor = Color.White;
             OrderGV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            OrderGV.Columns.AddRange(new DataGridViewColumn[] { Num, Product, Quantity, Price, TotPrice });
             OrderGV.GridColor = SystemColors.ControlDarkDark;
             OrderGV.Location = new Point(460, 439);
             OrderGV.Name = "OrderGV";
             OrderGV.RowHeadersWidth = 51;
             OrderGV.RowTemplate.Height = 29;
-            OrderGV.Size = new Size(703, 220);
+            OrderGV.Size = new Size(678, 220);
             OrderGV.TabIndex = 43;
-            // 
-            // Num
-            // 
-            Num.HeaderText = "Num";
-            Num.MinimumWidth = 10;
-            Num.Name = "Num";
-            Num.Width = 125;
-            // 
-            // Product
-            // 
-            Product.HeaderText = "Product";
-            Product.MinimumWidth = 10;
-            Product.Name = "Product";
-            Product.Width = 150;
-            // 
-            // Quantity
-            // 
-            Quantity.HeaderText = "Quantity";
-            Quantity.MinimumWidth = 6;
-            Quantity.Name = "Quantity";
-            Quantity.Width = 125;
-            // 
-            // Price
-            // 
-            Price.HeaderText = "Price";
-            Price.MinimumWidth = 10;
-            Price.Name = "Price";
-            Price.Width = 125;
-            // 
-            // TotPrice
-            // 
-            TotPrice.HeaderText = "TotalPrice";
-            TotPrice.MinimumWidth = 10;
-            TotPrice.Name = "TotPrice";
-            TotPrice.Width = 125;
             // 
             // textBox1
             // 
@@ -379,11 +338,6 @@
         private Button button1;
         private DataGridView OrderGV;
         private TextBox textBox1;
-        private DataGridViewTextBoxColumn Num;
-        private DataGridViewTextBoxColumn Product;
-        private DataGridViewTextBoxColumn Quantity;
-        private DataGridViewTextBoxColumn Price;
-        private DataGridViewTextBoxColumn TotPrice;
         private Label label7;
         private Label TotAmount;
     }

@@ -99,6 +99,12 @@ namespace InventoryManagementSystem {
             populateproduct();
             fillcategory();
             //updateproduct();
+
+            table.Columns.Add("Num", typeof(int));
+            table.Columns.Add("Product", typeof(string));
+            table.Columns.Add("Quantity", typeof(int));
+            table.Columns.Add("Price", typeof(int));
+            table.Columns.Add("TotPrice", typeof(int));
         }
 
         private void CustomersGV_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -214,7 +220,8 @@ namespace InventoryManagementSystem {
                 num = num + 1;
                 qty = Convert.ToInt32(QtyTb.Text);
                 totprice = qty * price;
-                OrderGV.Rows.Add(num, product, qty, price, totprice);
+                table.Rows.Add(num, product, qty, price, totprice);
+                OrderGV.DataSource = table;
                 flag = 0;
 
                 totalSum += totprice;
