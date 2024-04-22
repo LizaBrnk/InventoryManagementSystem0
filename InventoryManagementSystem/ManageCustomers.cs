@@ -148,7 +148,9 @@ namespace InventoryManagementSystem {
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            HomeForm home = new HomeForm();
+            home.Show();
+            this.Hide();
         }
 
         private void label9_Click(object sender, EventArgs e)

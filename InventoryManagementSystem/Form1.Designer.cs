@@ -36,6 +36,7 @@
             UnameTb = new TextBox();
             label1 = new Label();
             label2 = new Label();
+            label4 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -50,7 +51,7 @@
             panel1.Controls.Add(button1);
             panel1.Controls.Add(UnameTb);
             panel1.Controls.Add(label1);
-            panel1.Location = new Point(110, 85);
+            panel1.Location = new Point(132, 117);
             panel1.Name = "panel1";
             panel1.Size = new Size(309, 386);
             panel1.TabIndex = 0;
@@ -146,18 +147,32 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 16.2F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(16, 9);
+            label2.Location = new Point(45, 37);
             label2.Name = "label2";
             label2.Size = new Size(502, 38);
             label2.TabIndex = 1;
             label2.Text = "INVENTORY MANAGEMENT SYSTEM";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Cursor = Cursors.Hand;
+            label4.Font = new Font("Century Gothic", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.White;
+            label4.Location = new Point(567, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 40);
+            label4.TabIndex = 13;
+            label4.Text = "X";
+            label4.Click += label4_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Blue;
-            ClientSize = new Size(530, 510);
+            ClientSize = new Size(603, 558);
+            Controls.Add(label4);
             Controls.Add(label2);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
@@ -183,5 +198,6 @@
         private Label label3;
         private PictureBox pictureBox1;
         private MaskedTextBox PasswordTb;
+        private Label label4;
     }
 }

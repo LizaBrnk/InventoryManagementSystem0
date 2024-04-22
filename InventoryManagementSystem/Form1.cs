@@ -28,7 +28,7 @@ namespace InventoryManagementSystem {
 
         }
 
-        private string originalPassword = ""; 
+        private string originalPassword = "";
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked == true)
@@ -58,7 +58,7 @@ namespace InventoryManagementSystem {
         private void button1_Click(object sender, EventArgs e)
         {
             Con.Open();
-            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from UserTbl where Uname = '"+UnameTb.Text+"' and Upassword = '"+PasswordTb.Text+"'", Con);
+            SqlDataAdapter sda = new SqlDataAdapter("Select Count(*) from UserTbl where Uname = '" + UnameTb.Text + "' and Upassword = '" + PasswordTb.Text + "'", Con);
             DataTable dt = new DataTable();
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
@@ -72,6 +72,11 @@ namespace InventoryManagementSystem {
                 MessageBox.Show("Wrong UserName or Password");
             }
             Con.Close();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

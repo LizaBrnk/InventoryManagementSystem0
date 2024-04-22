@@ -49,6 +49,7 @@
             button2 = new Button();
             button3 = new Button();
             label8 = new Label();
+            button4 = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CustomersGV).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ProductsGV).BeginInit();
@@ -332,11 +333,28 @@
             label8.TabIndex = 49;
             label8.Text = "Order Id:";
             // 
+            // button4
+            // 
+            button4.BackColor = Color.Crimson;
+            button4.Cursor = Cursors.Hand;
+            button4.FlatAppearance.BorderSize = 0;
+            button4.FlatStyle = FlatStyle.Flat;
+            button4.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.ForeColor = Color.White;
+            button4.Location = new Point(262, 621);
+            button4.Name = "button4";
+            button4.Size = new Size(102, 38);
+            button4.TabIndex = 50;
+            button4.Text = "Home";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
+            // 
             // ManageOrders
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1278, 710);
+            Controls.Add(button4);
             Controls.Add(label8);
             Controls.Add(button3);
             Controls.Add(button2);
@@ -396,5 +414,6 @@
         private Button button2;
         private Button button3;
         private Label label8;
+        private Button button4;
     }
 }
