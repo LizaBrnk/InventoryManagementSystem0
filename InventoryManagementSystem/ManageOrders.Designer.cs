@@ -163,7 +163,7 @@
             OrderDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
             OrderDate.Format = DateTimePickerFormat.Short;
             OrderDate.Location = new Point(16, 583);
-            OrderDate.MaxDate = new DateTime(2024, 4, 21, 23, 25, 37, 0);
+            OrderDate.MaxDate = new DateTime(2024, 6, 1, 0, 0, 0, 0);
             OrderDate.MinDate = new DateTime(2023, 1, 1, 0, 0, 0, 0);
             OrderDate.Name = "OrderDate";
             OrderDate.Size = new Size(194, 30);

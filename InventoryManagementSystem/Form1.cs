@@ -63,8 +63,8 @@ namespace InventoryManagementSystem {
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "1")
             {
-                ManageCustomers cust = new ManageCustomers();
-                cust.Show();
+                HomeForm home = new HomeForm();
+                home.Show();
                 this.Hide();
             }
             else
